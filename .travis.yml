@@ -1,3 +1,6 @@
 language: python
 python:
   - 3.9
+
+install:
+  - pipenv install --dev --ignore-pipfile --deploy
