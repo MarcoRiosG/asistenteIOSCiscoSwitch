@@ -1,36 +1,5 @@
-def enter_global_config_mode():
-    return "\nenable \nconfigure terminal \n"
-
-def config_b(comandos):
-    config = input("\nNombre del dispositivo: ")
-    if config.strip():
-        comandos += "\nhostname " + config
-    config = input("\nContraseña de modo privilegiado: ")
-    if config.strip():
-        comandos += "\nenable secret " + config
-    config = input("\n¿Encriptar contraseñas? (Escribir lo que sea para afirmar) ")
-    if config.strip():
-        comandos += "\nservice password-encryption"
-    config = input("\nBanner de acceso (MOTD): ")
-    if config.strip():
-        comandos += "\nbanner motd #" + config + "#"
-    config = input("\n¿Configurar linea de consola? (Escribir lo que sea para afirmar) ")
-    if config.strip():
-        comandos += "\nline con 0 "
-        config = input("Contraseña: ")
-        if config.strip():
-            comandos += "\npassword " + config
-            comandos += "\nlogin"
-    config = input("\n¿Configurar lineas de vty? (Escribir lo que sea para afirmar) ")
-    if config.strip():
-        comandos += "\nline vty 0 15"
-        config = input("\nContraseña: ")
-        if config.strip():
-            comandos += "\npassword " + config
-            comandos += "\nlogin"
-    comandos += "\ndo copy run start \n"
-
-    return comandos
+import global_config
+import config_basic
 
 def int_acceso(comandos):
     comandos += "\ninterface vlan 1"
@@ -140,7 +109,7 @@ def main():
     print("**********DEJAR VACIA UNA OPCION HARA QUE DICHA CONFIGURACION NO SE MODIFIQUE**********")
     enter_g_c = input("¿Desea recibir los comandos para entrar al modo de configuracion global? [s/n] ")
     if enter_g_c == "s":
-        comandos += enter_global_config_mode()
+        comandos += global_config.enter_global_config_mode()
 
     terminar_conf = True
     while terminar_conf:
@@ -155,7 +124,7 @@ def main():
             print("Gracias por usar este programa, solo copia y pega la configuracion en el CLI :)")
             terminar_conf = False
         elif int(opcion) == 1:
-            comandos = config_b(comandos)
+            comandos = config_basic.config_b(comandos)
         elif int(opcion) == 2:
             comandos = int_acceso(comandos)
         elif int(opcion) == 3:
