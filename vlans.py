@@ -1,10 +1,27 @@
 def vlan(comandos):
-    config = input("\nNumero de VLAN a crear/configurar [1-4094]: ")
-    if config.strip():
-        comandos += "\nvlan " + config
-        config = input("\nNombre de la VLAN: ")
+    vlan_list = []
+    config = input("\nNumero de VLAN a crear/configurar [1-4094], escribir solo 1 y dar Enter para configurar otra VLAN, para ya no agrergar mas favor de escribir X: ")
+    condicion = True
+    while condicion:
+        while not config:
+            print("\nNo puede dejar este campo vacio, introduzca VLANs (#) validas o X para finalizar")
+            config = input("\nNumero de VLAN a crear/configurar [1-4094], escribir solo 1 y dar Enter para configurar otra VLAN, para ya no agrergar mas favor de escribir X: ")
+        if config == 'X' or config == 'x':
+            condicion = False
+        else:
+            try:
+                int(config)
+            except:    
+                print("\nEscribir solo numeros")
+                config = input("\nNumero de VLAN a crear/configurar [1-4094], escribir solo 1 y dar Enter para configurar otra VLAN, para ya no agrergar mas favor de escribir X: ")
+            else:
+                vlan_list.append(config)
+                config = input("\nNumero de VLAN a crear/configurar [1-4094], escribir solo 1 y dar Enter para configurar otra VLAN, para ya no agrergar mas favor de escribir X: ")
+    for vl in vlan_list:
+        comandos += "\nvlan " + vl
+        config = input(f"\nNombre de la VLAN{vl}: ")
         if config.strip():
-            comandos += "\nname " + config + "\nexit"
+            comandos += "\nname " + config + "\nexit"        
     config = input("\n¿Asignar interfaces a alguna VLAN? (Escribir lo que sea para afirmar) ")
     if config.strip():
         interfaces = []
