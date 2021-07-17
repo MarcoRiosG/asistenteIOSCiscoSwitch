@@ -1,4 +1,4 @@
-import global_config,  config_basic, vlan_acceso, vlans
+import global_config,  config_basic, vlan_acceso, vlans, port_sec
 
 def main():
 
@@ -27,6 +27,8 @@ def main():
             comandos = vlan_acceso.int_acceso(comandos)
         elif int(opcion) == 3:
             comandos = vlans.vlan(comandos)
+        elif int(opcion) == 4:
+            comandos = port_sec.port_security(comandos)
     print("Script:")
     print(comandos)
     with open("comandos.txt", "w") as archivo:
