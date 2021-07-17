@@ -1,7 +1,7 @@
 import unittest
 import pytest
 
-import global_config, config_basic, vlan_acceso, vlans
+import global_config, config_basic, vlan_acceso, vlans, port_sec
 
 def test_enter_global_config(monkeypatch):
 
@@ -38,5 +38,15 @@ def test_vlans(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(answers))
     returned_comands = vlans.vlan(comandos)
     expected_comands = "\nvlan 2\nname prueba\nexit\ninterface f0/2\ninterface f0/3\nswitchport mode trunk\nswitchport trunk allowed vlan 2,5\ninterface f0/4\nswitchport mode trunk\nswitchport trunk native vlan 1\ninterface f0/5\nswitchport mode access\ninterface f0/6\nswitchport mode access\nswitchport access vlan 6\nexit\ndo copy run start \n"
+
+    assert returned_comands == expected_comands
+
+def test_port_security(monkeypatch):
+
+    answers = iter(["", "r", "1", "2", "3", "4", "x", "", "", "", "", "S", "r", "2", "r", "2", "e", "P", "A", "", "2222.2222.2222", "", "3", "3", "R", "A", "3333.3333.3333", "S", "4444.4444.4444", "", "4", "4", "S"])
+    comandos = ""
+    monkeypatch.setattr('builtins.input', lambda _: next(answers))
+    returned_comands = port_sec.port_security(comandos)
+    expected_comands = "\ninterface f0/1\nswitchport port-security\nexit\ninterface f0/2\nswitchport port-security\nswitchport port-security mac-address sticky\nswitchport port-security aging time 2\nswitchport port-security maximum 2\nswitchport port-security violation protect\nexit\ninterface f0/3\nswitchport port-security\nswitchport port-security mac-address 2222.2222.2222\nswitchport port-security aging time 3\nswitchport port-security maximum 3\nswitchport port-security violation restrict\nexit\ninterface f0/4\nswitchport port-security\nswitchport port-security mac-address 3333.3333.3333\nswitchport port-security mac-address 4444.4444.4444\nswitchport port-security aging time 4\nswitchport port-security maximum 4\nswitchport port-security violation shutdown\nexit\ndo copy run start \n"
 
     assert returned_comands == expected_comands

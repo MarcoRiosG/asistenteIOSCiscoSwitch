@@ -18,7 +18,7 @@ def port_security(comandos):
                 interfaces.append(config)
                 config = input("\nInterfaces sobre las cuales configurar la seguridad, escribir solo 1 numero y dar Enter para añadir otra interfaz, para ya no agregar mas interfaces favor de escribir X \n(El numero de interfaces disponibles dependera del modelo del switch): ")
     for interface in interfaces:
-        comandos += "\nswitchport port-security"
+        comandos += "\ninterface f0/" + interface + "\nswitchport port-security"
         configM = input(f"\nTipo de seguridad para la interfaz f0/{interface} [Address (A)/Sticky (S)] ")
         condicion1 = True
         while condicion1: 
@@ -75,7 +75,6 @@ def port_security(comandos):
                     condicion3 = False
             else:
                 condicion3 = False
-        comandos += "\nexit"
         configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protected (P)/Restrict (R)/Shutdown (S)]: ")
         condicion3 = True
         while condicion3:
