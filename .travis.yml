@@ -14,12 +14,12 @@ script:
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
-before_deploy:
-  echo "Before Deployment"
-deploy:
-  skip_cleanup: true
-  on:
-    branch: main
-  provider: script
-  script:
-    pipenv run python deploy.py
+# before_deploy:
+#   echo "Before Deployment"
+# deploy:
+#   skip_cleanup: true
+#   on:
+#     branch: main
+#   provider: script
+#   script:
+#     pipenv run python deploy.py

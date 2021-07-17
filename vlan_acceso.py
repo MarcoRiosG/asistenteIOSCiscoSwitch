@@ -7,7 +7,7 @@ def int_acceso(comandos):
         while not config:
             print("\nNo puede dejar este campo vacio, introduzca una mascara valida X.X.X.X")
             config = input("\nMascara de red: ")
-        comandos += "\nenable secret " + config.strip()
+        comandos += " " + config.strip()
     comandos += "\nno shutdown \nexit \ndo copy run start \n"
     
     return comandos
