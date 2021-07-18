@@ -16,5 +16,3 @@ Se imprimirá el script resultante que simplemente deberá ser copiado y pegado 
    :align: center
 
    *Archivo resultante*
-   
-
