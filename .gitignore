@@ -2,3 +2,6 @@ __pycache__
 .idea
 .pytest_cache
 comandos.txt
+asistente/
+Docs/build
+Docs/source/_templates

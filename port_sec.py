@@ -75,7 +75,7 @@ def port_security(comandos):
                     condicion3 = False
             else:
                 condicion3 = False
-        configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protected (P)/Restrict (R)/Shutdown (S)]: ")
+        configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protect (P)/Restrict (R)/Shutdown (S)]: ")
         condicion3 = True
         while condicion3:
             if configSec.strip():
@@ -83,7 +83,7 @@ def port_security(comandos):
                     str(configSec)
                 except:
                     print("\nEscribir solo texto")
-                    configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protected (P)/Restrict (R)/Shutdown (S)]: ")
+                    configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protect (P)/Restrict (R)/Shutdown (S)]: ")
                 else:
                     if configSec == 'P' or configSec == 'p':
                         comandos += "\nswitchport port-security violation protect"
@@ -96,7 +96,7 @@ def port_security(comandos):
                         condicion3 = False
                     else:
                         print("\nEscribir solo 'P', 'p', 'R', 'r', 'S' o 's'")
-                        configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protected (P)/Restrict (R)/Shutdown (S)]: ")
+                        configSec = input(f"\nAccion de respuesta en la interfaz f0/{interface} [Protect (P)/Restrict (R)/Shutdown (S)]: ")
             else:
                 condicion3 = False
         comandos += "\nexit"

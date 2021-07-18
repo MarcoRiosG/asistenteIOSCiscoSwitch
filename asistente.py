@@ -5,8 +5,8 @@ def main():
     comandos = ""
     print("¡¡¡Bienvenido al creador de scripts basicos para switch Cisco!!!")
     print("**********DEJAR VACIA UNA OPCION HARA QUE DICHA CONFIGURACION NO SE MODIFIQUE**********")
-    enter_g_c = input("¿Desea recibir los comandos para entrar al modo de configuracion global? [s/n] ")
-    if enter_g_c == "s":
+    enter_g_c = input("¿Desea recibir los comandos para entrar al modo de configuracion global? (Escribir 's' para afirmar) ")
+    if enter_g_c == "s" or enter_g_c == "S":
         comandos += global_config.enter_global_config_mode()
 
     terminar_conf = True
