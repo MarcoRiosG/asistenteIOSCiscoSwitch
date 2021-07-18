@@ -11,7 +11,7 @@ def main():
 
     terminar_conf = True
     while terminar_conf:
-        opcion = input("""Elija una de las configuraciones a realizar: 
+        opcion = input("""\nElija una de las configuraciones a realizar: 
         1. Configuracion basica
         2. Configurar interfaz de acceso (VLAN 1)
         3. Configurar VLANs
