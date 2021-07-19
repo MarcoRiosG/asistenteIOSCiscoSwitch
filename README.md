@@ -3,6 +3,10 @@
 ## Badges
 [![Build Status](https://travis-ci.com/MarcoRiosG/asistenteIOSCiscoSwitch.svg?branch=main)](https://travis-ci.com/MarcoRiosG/asistenteIOSCiscoSwitch)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/030cdaa70fb67f8bf8b4/test_coverage)](https://codeclimate.com/github/MarcoRiosG/asistenteIOSCiscoSwitch/test_coverage)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/030cdaa70fb67f8bf8b4/maintainability)](https://codeclimate.com/github/MarcoRiosG/asistenteIOSCiscoSwitch/maintainability)
+
 ## Acerca del proyecto
 Este proyecto busca ayudar a las personas que estan entrando al mundo de las redes de Cisco y tengan problemas para memorizar los comandos basicos del switch con IOS de Cisco.
 
@@ -19,6 +23,8 @@ Este programa provee de preguntas a los usuarios en un lenguaje mas natural acer
 * Mejorar los textos
 
 * Añadir mas configuraciones
+
+* Refactorizar
 
 ## Como ejecutarlo...
 Ejecutar el archivo asistente.py con el comando:
