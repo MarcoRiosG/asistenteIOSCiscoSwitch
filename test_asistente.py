@@ -50,3 +50,10 @@ def test_port_security(monkeypatch):
     expected_comands = "\ninterface f0/1\nswitchport port-security\nexit\ninterface f0/2\nswitchport port-security\nswitchport port-security mac-address sticky\nswitchport port-security aging time 2\nswitchport port-security maximum 2\nswitchport port-security violation protect\nexit\ninterface f0/3\nswitchport port-security\nswitchport port-security mac-address 2222.2222.2222\nswitchport port-security aging time 3\nswitchport port-security maximum 3\nswitchport port-security violation restrict\nexit\ninterface f0/4\nswitchport port-security\nswitchport port-security mac-address 3333.3333.3333\nswitchport port-security mac-address 4444.4444.4444\nswitchport port-security aging time 4\nswitchport port-security maximum 4\nswitchport port-security violation shutdown\nexit\ndo copy run start \n"
 
     assert returned_comands == expected_comands
+
+def test_vlan_acceso_no_config(monkeypatch):
+    answers = iter([""])
+    comandos = ""
+    monkeypatch.setattr('builtins.input', lambda _: next(answers))
+    returned_comands = vlan_acceso.int_acceso(comandos)
+    expected_comands = "\ninterface vlan 1\nno shutdown \nexit \ndo copy run start \n"

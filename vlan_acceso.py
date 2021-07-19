@@ -8,6 +8,5 @@ def int_acceso(comandos):
             print("\nNo puede dejar este campo vacio, introduzca una mascara valida X.X.X.X")
             config = input("\nMascara de red: ")
         comandos += " " + config.strip()
-    comandos += "\nno shutdown \nexit \ndo copy run start \n"
-    
+    comandos += "\nno shutdown \nexit \ndo copy run start \n" 
     return comandos
